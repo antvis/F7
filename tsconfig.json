@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "es6",
+    "noImplicitThis": true,
+    "noImplicitUseStrict": true,
+    "types": [
+      "mini-types"
+    ]
+  },
+  "include": [
+    "types/**/*",
+    "src/**/*"
+  ]
+}

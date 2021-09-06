@@ -1,0 +1,20 @@
+{
+  "name": "F7",
+  "version": "1.0.0",
+  "description": "L7小程序版本，支持支付宝、微信等多端小程序。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/antvis/F7.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/antvis/F7/issues"
+  },
+  "homepage": "https://github.com/antvis/F7#readme"
+}
