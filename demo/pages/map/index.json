@@ -1,0 +1,6 @@
+{
+  "defaultTitle": "Map",
+  "usingComponents": {
+    "f7-map": "../../es/map/index"
+  }
+}

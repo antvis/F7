@@ -1,0 +1,104 @@
+Arguments: 
+  /usr/local/Cellar/node/14.12.0/bin/node /usr/local/bin/yarn
+
+PATH: 
+  /usr/local/lib/node_modules/tnpm/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/Users/zhongwu/GitHub/F7/node_modules/.bin:/usr/local/opt/ruby/bin:/usr/local/opt/ruby/bin:/Users/zhongwu/env/android/build-tools/28.0.0:/Users/zhongwu/env/android/tools:/Users/zhongwu/env/android/platform-tools:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/usr/local/opt/ruby/bin:/Users/zhongwu/env/android/build-tools/28.0.0:/Users/zhongwu/env/android/tools:/Users/zhongwu/env/android/platform-tools:/Users/zhongwu/Flutter/flutter/bin:/Users/zhongwu/Flutter/flutter/bin
+
+Yarn version: 
+  1.22.10
+
+Node version: 
+  14.12.0
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: EINVAL: invalid argument, unlink '/Users/zhongwu/GitHub/F7/node_modules/cli-truncate/node_modules/slice-ansi'
+
+npm manifest: 
+  {
+    "name": "F7",
+    "version": "1.0.0",
+    "description": "L7小程序版本，支持支付宝、微信等多端小程序。",
+    "main": "index.js",
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/antvis/F7.git"
+    },
+    "keywords": [
+      "F7",
+      "mini-program",
+      "L7",
+      "L7-mini"
+    ],
+    "author": "",
+    "bugs": {
+      "url": "https://github.com/antvis/F7/issues"
+    },
+    "homepage": "https://github.com/antvis/F7#readme",
+    "files": [
+      "es"
+    ],
+    "license": "MIT",
+    "devDependencies": {
+      "@babel/core": "^7.6.4",
+      "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+      "@babel/plugin-transform-runtime": "^7.11.5",
+      "@babel/preset-env": "^7.6.3",
+      "@babel/preset-typescript": "^7.6.0",
+      "@typescript-eslint/parser": "^2.17.0",
+      "alipay-style": "^0.1.0",
+      "eslint": "^5.16.0",
+      "eslint-config-ali": "^3.1.0",
+      "eslint-plugin-import": "^2.11.0",
+      "eslint-plugin-typescript": "^0.14.0",
+      "gulp": "^4.0.0",
+      "gulp-babel": "^8.0.0",
+      "gulp-clean-css": "^4.0.0",
+      "gulp-if": "^2.0.2",
+      "gulp-inject-envs": "^1.1.1",
+      "gulp-less": "^4.0.1",
+      "gulp-rename": "^1.2.3",
+      "lint-staged": "^8.2.0",
+      "mini-types": "^0.0.1",
+      "pre-commit": "^1.2.2",
+      "stylelint": "^10.1.0",
+      "stylelint-config-standard": "^18.2.0",
+      "typescript": "^3.6.4"
+    },
+    "dependencies": {
+      "@babel/runtime": "^7.11.2"
+    },
+    "scripts": {
+      "lint-staged": "lint-staged",
+      "build": "yarn && NODE_ENV=production node scripts/compiler.js",
+      "pub": "npm run build && node scripts/pub.js",
+      "dev": "yarn && node scripts/compiler.js",
+      "build:rpx": "yarn && NODE_ENV=production node scripts/compiler.js --rpx",
+      "pub:rpx": "npm run build:rpx && node scripts/pub.js --rpx",
+      "dev:rpx": "yarn && node scripts/compiler.js --rpx"
+    },
+    "pre-commit": [
+      "lint-staged"
+    ],
+    "lint-staged": {
+      "*.ts": [
+        "eslint --ext .ts",
+        "git add"
+      ],
+      "*.js": [
+        "eslint",
+        "git add"
+      ],
+      "*.less": [
+        "stylelint --syntax less"
+      ]
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

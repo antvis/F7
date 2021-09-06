@@ -4,9 +4,7 @@
     "target": "es6",
     "noImplicitThis": true,
     "noImplicitUseStrict": true,
-    "types": [
-      "mini-types"
-    ]
+    "types": []
   },
   "include": [
     "types/**/*",
