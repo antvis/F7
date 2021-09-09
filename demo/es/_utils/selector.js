@@ -51,23 +51,6 @@ var Selector = /*#__PURE__*/function () {
     });
   };
 
-  _proto.element = function element(selector) {
-    var _this4 = this;
-
-    return new Promise(function (resolve, reject) {
-      _this4._selector.select("#" + selector).fields({
-        node: true,
-        context: false,
-        rect: true,
-        computedStyle: ['height', 'width']
-      }, function (res) {
-        res.node.left = res.left;
-        res.node.top = res.top;
-        resolve(res.node);
-      }).exec();
-    });
-  };
-
   return Selector;
 }();
 
