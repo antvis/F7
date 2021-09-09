@@ -1463,6 +1463,11 @@
     semver "^7.3.2"
     tsutils "^3.17.1"
 
+"@uni/env@^1.0.0":
+  version "1.0.7"
+  resolved "https://registry.npm.alibaba-inc.com/@uni/env/download/@uni/env-1.0.7.tgz#eb6c36fbcaa45f88108038f68f1a3688cd0f2ba7"
+  integrity sha1-62w2+8qkX4gQgDj2jxo2iM0PK6c=
+
 accord@^0.29.0:
   version "0.29.0"
   resolved "https://registry.npm.alibaba-inc.com/accord/download/accord-0.29.0.tgz#b741c176d00435c5929d466dfe8cf6bee933b1e4"
@@ -7136,6 +7141,13 @@ unist-util-visit@^1.1.0:
   integrity sha1-RySqqEhububibX/zyGhZYNVgseM=
   dependencies:
     unist-util-visit-parents "^2.0.0"
+
+universal-env@^3.3.3:
+  version "3.3.3"
+  resolved "https://registry.npm.alibaba-inc.com/universal-env/download/universal-env-3.3.3.tgz#adb1bf6a3885d99efe78ab969f9dc54c39b3ebe4"
+  integrity sha1-rbG/ajiF2Z7+eKuWn53FTDmz6+Q=
+  dependencies:
+    "@uni/env" "^1.0.0"
 
 unset-value@^1.0.0:
   version "1.0.0"

@@ -15,17 +15,46 @@ class Selector {
     });
   }
 
-  fields(selector: string, params: object) {
+  fields(selector: string) {
     return new Promise((resolve, reject) => {
-      return this._selector
+      this._selector
         .select(selector)
-        .fields(params, (res) => resolve(res.node))
+        .fields(
+          {
+            node: true,
+            context: false,
+            rect: true,
+            computedStyle: ['height', 'width'],
+          },
+          function (res) {
+            res.node.left = res.left;
+            res.node.top = res.top;
+            resolve(res.node);
+          }
+        )
+        .exec();
+    });
+  }
+  element(selector: string) {
+    return new Promise((resolve, reject) => {
+      this._selector
+        .select(`#${selector}`)
+        .fields(
+          {
+            node: true,
+            context: false,
+            rect: true,
+            computedStyle: ['height', 'width'],
+          },
+          function (res) {
+            res.node.left = res.left;
+            res.node.top = res.top;
+            resolve(res.node);
+          }
+        )
         .exec();
     });
   }
 }
 
-
 export default new Selector();
-
-

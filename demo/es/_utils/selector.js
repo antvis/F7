@@ -17,12 +17,36 @@ var Selector = /*#__PURE__*/function () {
     });
   };
 
-  _proto.fields = function fields(selector, params) {
+  _proto.fields = function fields(selector) {
     var _this2 = this;
 
     return new Promise(function (resolve, reject) {
-      return _this2._selector.select(selector).fields(params, function (res) {
-        return resolve(res.node);
+      _this2._selector.select(selector).fields({
+        node: true,
+        context: false,
+        rect: true,
+        computedStyle: ['height', 'width']
+      }, function (res) {
+        res.node.left = res.left;
+        res.node.top = res.top;
+        resolve(res.node);
+      }).exec();
+    });
+  };
+
+  _proto.element = function element(selector) {
+    var _this3 = this;
+
+    return new Promise(function (resolve, reject) {
+      _this3._selector.select("#" + selector).fields({
+        node: true,
+        context: false,
+        rect: true,
+        computedStyle: ['height', 'width']
+      }, function (res) {
+        res.node.left = res.left;
+        res.node.top = res.top;
+        resolve(res.node);
       }).exec();
     });
   };

@@ -33,21 +33,20 @@ Component({
       zoom,
     });
 
-    const resp = await SelectorQuery.node(`#${id}`);
-    console.log(resp, 'resp');
+    let canvasElement = await SelectorQuery.element('map')
 
     const scene = new Scene({
       id: id,
       // @ts-ignore
-      canvas: resp.node,
+      canvas: canvasElement,
       map: map,
       hasBaseMap: true,
     });
 
-    this.setData({
-      map,
-      scene,
-    });
+    // this.setData({
+    //   map,
+    //   scene,
+    // });
   },
   didUnmount() {},
   onError() {},

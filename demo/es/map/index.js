@@ -19,7 +19,7 @@ Component({
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-      var _this$props, center, pitch, zoom, id, map, resp, scene;
+      var _this$props, center, pitch, zoom, id, map, canvasElement, scene;
 
       return _regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -39,25 +39,22 @@ Component({
                 zoom: zoom
               });
               _context.next = 4;
-              return SelectorQuery.node("#" + id);
+              return SelectorQuery.element('map');
 
             case 4:
-              resp = _context.sent;
-              console.log(resp, 'resp');
+              canvasElement = _context.sent;
               scene = new Scene({
                 id: id,
                 // @ts-ignore
-                canvas: resp.node,
+                canvas: canvasElement,
                 map: map,
                 hasBaseMap: true
-              });
+              }); // this.setData({
+              //   map,
+              //   scene,
+              // });
 
-              _this.setData({
-                map: map,
-                scene: scene
-              });
-
-            case 8:
+            case 6:
             case "end":
               return _context.stop();
           }
