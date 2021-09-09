@@ -1,6 +1,5 @@
-import { Scene } from '@antv/l7-scene';
+import { Scene, PointLayer } from "@antv/l7"
 import { Map } from '@antv/l7-maps';
-// import { registerCanvas } from '@antv/l7-utils';
 
 import SelectorQuery from '../_utils/selector';
 
@@ -11,20 +10,12 @@ Component({
   },
   props: {
     center: [120, 30],
-    zoom: 12,
+    zoom: 4,
     pitch: 0,
     id: 'map',
   },
   async didMount() {
     const { center, pitch, zoom, id } = this.props;
-
-    // const $canvas = my.createOffscreenCanvas({
-    //   width: '750',
-    //   height: '750',
-    //   type: '2d',
-    // });
-
-    // registerCanvas($canvas);
 
     const map = new Map({
       hash: true,
@@ -33,21 +24,42 @@ Component({
       zoom,
     });
 
-    const resp = await SelectorQuery.node(`#${id}`);
-    console.log(resp, 'resp');
+    let canvasElement = await SelectorQuery.element('map')
 
     const scene = new Scene({
       id: id,
       // @ts-ignore
-      canvas: resp.node,
+      canvas: canvasElement,
       map: map,
       hasBaseMap: true,
     });
 
-    this.setData({
-      map,
-      scene,
-    });
+    const pointData = [
+      {
+        lng: 120.131441,
+        lat: 30.279383,
+      }
+    ];
+       
+    let layer = new PointLayer({
+      zIndex: 2
+    })
+     .source(pointData, {
+       parser: {
+         type: 'json',
+         x: 'lng',
+         y: 'lat',
+       },
+     })
+     .shape('circle')
+     .color('rgba(255, 0, 0, 1.0)')
+     .size(10)
+     .select(true)
+     .active(true);
+
+    scene.on('loaded', () => {
+      scene.addLayer(layer)
+    })
   },
   didUnmount() {},
   onError() {},
