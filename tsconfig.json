@@ -4,7 +4,8 @@
     "target": "es6",
     "noImplicitThis": true,
     "noImplicitUseStrict": true,
-    "types": []
+    "types": [],
+    "moduleResolution": "node"
   },
   "include": [
     "types/**/*",
