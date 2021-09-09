@@ -52,10 +52,10 @@ var Selector = /*#__PURE__*/function () {
   };
 
   _proto.element = function element(selector) {
-    var _this3 = this;
+    var _this4 = this;
 
     return new Promise(function (resolve, reject) {
-      _this3._selector.select("#" + selector).fields({
+      _this4._selector.select("#" + selector).fields({
         node: true,
         context: false,
         rect: true,
