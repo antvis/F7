@@ -34,12 +34,6 @@ Component({
       hasBaseMap: true,
     });
 
-<<<<<<< HEAD
-    // this.setData({
-    //   map,
-    //   scene,
-    // });
-=======
     const pointData = [
       {
         lng: 120.131441,
@@ -66,7 +60,6 @@ Component({
     scene.on('loaded', () => {
       scene.addLayer(layer)
     })
->>>>>>> shihui_dev
   },
   didUnmount() {},
   onError() {},
