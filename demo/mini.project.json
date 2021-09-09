@@ -1,0 +1,9 @@
+{
+  "component2": true,
+  "axmlStrictCheck": true,
+  "enableAppxNg": true,
+  "enableNodeModuleBabelTransform": true,
+  "node_modules_es6_whitelist": [
+    "l7regl"
+  ]
+}
