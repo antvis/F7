@@ -1,0 +1,12 @@
+{
+  "modes": [
+    {
+      "title": "map-ios",
+      "page": "pages/map-ios/index"
+    },
+    {
+      "title": "map",
+      "page": "pages/map/index"
+    }
+  ]
+}
