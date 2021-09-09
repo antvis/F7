@@ -1,7 +1,8 @@
-import { Scene, Map } from '@antv/l7';
+import { Scene } from '@antv/l7-scene';
+import { Map } from '@antv/l7-maps';
+// import { registerCanvas } from '@antv/l7-utils';
 
-import { ctx } from '../_utils/ctx';
-import { SelectorQuery } from '../_utils/dom';
+import SelectorQuery from '../_utils/selector';
 
 Component({
   data: {
@@ -16,74 +17,42 @@ Component({
   },
   async didMount() {
     const { center, pitch, zoom, id } = this.props;
-      const map = new Map({
-        hash: true,
-        center,
-        pitch,
-        zoom,
-      });
-      ctx
-        .createSelectorQuery()
-        .select(`#${id}`)
-        .fields(
-          {
-            node: true,
-            context: false,
-            rect: true,
-            computedStyle: ['height', 'width'],
-          },
-          (res) => {
-            res.node.left = res.left;
-            res.node.top = res.top;
-            console.log(res, JSON.stringify(res.node), 'res');
-            this.scene = new Scene({
-              id: id,
-              // @ts-ignore
-              canvas: res.node,
-              map: map,
-              hasBaseMap: true,
-            });
-          }
-        )
-        .exec();
+
+    // const $canvas = my.createOffscreenCanvas({
+    //   width: '750',
+    //   height: '750',
+    //   type: '2d',
+    // });
+
+    // registerCanvas($canvas);
+
+    const map = new Map({
+      hash: true,
+      center,
+      pitch,
+      zoom,
+    });
+
+    const resp = await SelectorQuery.node(`#${id}`);
+    console.log(resp, 'resp');
+
+    const scene = new Scene({
+      id: id,
+      // @ts-ignore
+      canvas: resp.node,
+      map: map,
+      hasBaseMap: true,
+    });
+
+    this.setData({
+      map,
+      scene,
+    });
   },
   didUnmount() {},
   onError() {},
   methods: {
-    onCanvasReady() {
-      //@ts-ignore
-      // const { center, pitch, zoom, id } = this.props;
-      // const map = new Map({
-      //   hash: true,
-      //   center,
-      //   pitch,
-      //   zoom,
-      // });
-      // ctx
-      //   .createSelectorQuery()
-      //   .select(`#${id}`)
-      //   .fields(
-      //     {
-      //       node: true,
-      //       context: false,
-      //       rect: true,
-      //       computedStyle: ['height', 'width'],
-      //     },
-      //     (res) => {
-      //       res.node.left = res.left;
-      //       res.node.top = res.top;
-      //       console.log(res, JSON.stringify(res.node), 'res');
-      //       this.scene = new Scene({
-      //         id: id,
-      //         // @ts-ignore
-      //         canvas: res.node,
-      //         map: map,
-      //         hasBaseMap: true,
-      //       });
-      //     }
-      //   )
-      //   .exec();
-    },
+    onCanvasReady() {},
     regionchange() {
       console.log('region change');
     },

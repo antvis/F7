@@ -26,6 +26,18 @@
     inversify "^5.0.1"
     reflect-metadata "^0.1.13"
 
+"@antv/l7-component@^2.5.13":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-component/download/@antv/l7-component-2.5.13.tgz#1c7fa8a8e85aa74586866f7243d98f75f82cc0fc"
+  integrity sha1-HH+oqOhap0WGhm9yQ9mPdfgswPw=
+  dependencies:
+    "@antv/l7-core" "^2.5.13"
+    "@antv/l7-utils" "^2.5.13"
+    "@babel/runtime" "^7.7.7"
+    eventemitter3 "^4.0.0"
+    inversify "^5.0.1"
+    reflect-metadata "^0.1.13"
+
 "@antv/l7-core@^2.5.12":
   version "2.5.12"
   resolved "https://registry.npm.alibaba-inc.com/@antv/l7-core/download/@antv/l7-core-2.5.12.tgz#ad75333b5c0fbb89d9a24d086d4582c2224e5942"
@@ -33,6 +45,27 @@
   dependencies:
     "@antv/async-hook" "^2.1.0"
     "@antv/l7-utils" "^2.5.12"
+    "@babel/runtime" "^7.7.7"
+    "@mapbox/tiny-sdf" "^1.1.1"
+    ajv "^6.10.2"
+    element-resize-event "^3.0.3"
+    eventemitter3 "^4.0.0"
+    gl-matrix "^3.1.0"
+    hammerjs "^2.0.8"
+    inversify "^5.0.1"
+    inversify-inject-decorators "^3.1.0"
+    lodash "^4.17.15"
+    probe.gl "^3.1.1"
+    reflect-metadata "^0.1.13"
+    viewport-mercator-project "^6.2.1"
+
+"@antv/l7-core@^2.5.13", "@antv/l7-core@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-core/download/@antv/l7-core-2.5.13.tgz#0799d5b670ecf49de512ae880418cc85b2ddf8a4"
+  integrity sha1-B5nVtnDs9J3lEq6IBBjMhbLd+KQ=
+  dependencies:
+    "@antv/async-hook" "^2.1.0"
+    "@antv/l7-utils" "^2.5.13"
     "@babel/runtime" "^7.7.7"
     "@mapbox/tiny-sdf" "^1.1.1"
     ajv "^6.10.2"
@@ -73,12 +106,50 @@
     polyline-miter-util "^1.0.1"
     reflect-metadata "^0.1.13"
 
+"@antv/l7-layers@^2.5.13", "@antv/l7-layers@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-layers/download/@antv/l7-layers-2.5.13.tgz#f8911554db7296d346b82a0fbda1b001c4576bc2"
+  integrity sha1-+JEVVNtyltNGuCoPvaGwAcRXa8I=
+  dependencies:
+    "@antv/async-hook" "^2.1.0"
+    "@antv/l7-core" "^2.5.13"
+    "@antv/l7-source" "^2.5.13"
+    "@antv/l7-utils" "^2.5.13"
+    "@babel/runtime" "^7.7.7"
+    "@mapbox/martini" "^0.2.0"
+    "@turf/meta" "^6.0.2"
+    d3-array "1"
+    d3-color "^1.4.0"
+    d3-scale "2"
+    earcut "^2.2.1"
+    eventemitter3 "^4.0.0"
+    extrude-polyline "^1.0.6"
+    gl-matrix "^3.1.0"
+    gl-vec2 "^1.3.0"
+    inversify "^5.0.1"
+    lodash "^4.17.15"
+    merge-json-schemas "1.0.0"
+    polyline-miter-util "^1.0.1"
+    reflect-metadata "^0.1.13"
+
 "@antv/l7-map@^2.5.12":
   version "2.5.12"
   resolved "https://registry.npm.alibaba-inc.com/@antv/l7-map/download/@antv/l7-map-2.5.12.tgz#9b63e49dddd94e4ee9764f007f3fabe912d0bed9"
   integrity sha1-m2Pknd3ZTk7pdk8Afz+r6RLQvtk=
   dependencies:
     "@antv/l7-utils" "^2.5.12"
+    "@babel/runtime" "^7.7.7"
+    "@mapbox/point-geometry" "^0.1.0"
+    "@mapbox/unitbezier" "^0.0.0"
+    eventemitter3 "^4.0.4"
+    lodash "^4.17.15"
+
+"@antv/l7-map@^2.5.13", "@antv/l7-map@^2.5.8-mini":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-map/download/@antv/l7-map-2.5.13.tgz#72995e0f4f6a26892053ed65be7644fcd9b6e6a5"
+  integrity sha1-cpleD09qJokgU+1lvnZE/Nm25qU=
+  dependencies:
+    "@antv/l7-utils" "^2.5.13"
     "@babel/runtime" "^7.7.7"
     "@mapbox/point-geometry" "^0.1.0"
     "@mapbox/unitbezier" "^0.0.0"
@@ -103,12 +174,42 @@
     reflect-metadata "^0.1.13"
     viewport-mercator-project "^6.2.1"
 
+"@antv/l7-maps@^2.5.13", "@antv/l7-maps@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-maps/download/@antv/l7-maps-2.5.13.tgz#a79fb74c777b72d1b50f0fb332f38f1327db1142"
+  integrity sha1-p5+3THd7ctG1Dw+zMvOPEyfbEUI=
+  dependencies:
+    "@amap/amap-jsapi-loader" "^0.0.3"
+    "@antv/l7-core" "^2.5.13"
+    "@antv/l7-map" "^2.5.13"
+    "@antv/l7-utils" "^2.5.13"
+    "@babel/runtime" "^7.7.7"
+    "@types/amap-js-api" "^1.4.6"
+    "@types/mapbox-gl" "^1.11.2"
+    gl-matrix "^3.1.0"
+    inversify "^5.0.1"
+    mapbox-gl "^1.2.1"
+    reflect-metadata "^0.1.13"
+    viewport-mercator-project "^6.2.1"
+
 "@antv/l7-renderer@^2.5.12":
   version "2.5.12"
   resolved "https://registry.npm.alibaba-inc.com/@antv/l7-renderer/download/@antv/l7-renderer-2.5.12.tgz#14f9b6f285eed37995890e401ca274436bf49177"
   integrity sha1-FPm28oXu03mViQ5AHKJ0Q2v0kXc=
   dependencies:
     "@antv/l7-core" "^2.5.12"
+    "@babel/runtime" "^7.7.7"
+    inversify "^5.0.1"
+    l7regl "^0.0.14"
+    lodash "^4.17.15"
+    reflect-metadata "^0.1.13"
+
+"@antv/l7-renderer@^2.5.13", "@antv/l7-renderer@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-renderer/download/@antv/l7-renderer-2.5.13.tgz#fd6cf438f5c5cd868f1dca025da47da1f01ec018"
+  integrity sha1-/Wz0OPXFzYaPHcoCXaR9ofAewBg=
+  dependencies:
+    "@antv/l7-core" "^2.5.13"
     "@babel/runtime" "^7.7.7"
     inversify "^5.0.1"
     l7regl "^0.0.14"
@@ -126,6 +227,22 @@
     "@antv/l7-maps" "^2.5.12"
     "@antv/l7-renderer" "^2.5.12"
     "@antv/l7-utils" "^2.5.12"
+    "@babel/runtime" "^7.7.7"
+    inversify "^5.0.1"
+    mapbox-gl "^1.2.1"
+    reflect-metadata "^0.1.13"
+
+"@antv/l7-scene@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-scene/download/@antv/l7-scene-2.5.13.tgz#72a2acabaaae6030ceab5301b74d7b5436e731c3"
+  integrity sha1-cqKsq6quYDDOq1MBt017VDbnMcM=
+  dependencies:
+    "@antv/l7-component" "^2.5.13"
+    "@antv/l7-core" "^2.5.13"
+    "@antv/l7-layers" "^2.5.13"
+    "@antv/l7-maps" "^2.5.13"
+    "@antv/l7-renderer" "^2.5.13"
+    "@antv/l7-utils" "^2.5.13"
     "@babel/runtime" "^7.7.7"
     inversify "^5.0.1"
     mapbox-gl "^1.2.1"
@@ -152,10 +269,40 @@
     reflect-metadata "^0.1.13"
     supercluster "^7.0.0"
 
+"@antv/l7-source@^2.5.13", "@antv/l7-source@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-source/download/@antv/l7-source-2.5.13.tgz#033c554fe35581b0d8ea55821d1a59b961a8797b"
+  integrity sha1-AzxVT+NVgbDY6lWCHRpZuWGoeXs=
+  dependencies:
+    "@antv/async-hook" "^2.1.0"
+    "@antv/l7-core" "^2.5.13"
+    "@antv/l7-utils" "^2.5.13"
+    "@babel/runtime" "^7.7.7"
+    "@mapbox/geojson-rewind" "^0.4.0"
+    "@turf/helpers" "^6.1.4"
+    "@turf/invariant" "^6.1.2"
+    "@turf/meta" "^6.0.2"
+    d3-dsv "^1.1.1"
+    d3-hexbin "^0.2.2"
+    eventemitter3 "^4.0.0"
+    inversify "^5.0.1"
+    lodash "^4.17.15"
+    reflect-metadata "^0.1.13"
+    supercluster "^7.0.0"
+
 "@antv/l7-utils@^2.5.12":
   version "2.5.12"
   resolved "https://registry.npm.alibaba-inc.com/@antv/l7-utils/download/@antv/l7-utils-2.5.12.tgz#6951494d40c153f7bef7e9223ef1124db66eee96"
   integrity sha1-aVFJTUDBU/e+9+kiPvESTbZu7pY=
+  dependencies:
+    "@babel/runtime" "^7.7.7"
+    "@turf/helpers" "^6.1.4"
+    d3-color "^1.4.0"
+
+"@antv/l7-utils@^2.5.13", "@antv/l7-utils@^2.5.8-mini17":
+  version "2.5.13"
+  resolved "https://registry.npm.alibaba-inc.com/@antv/l7-utils/download/@antv/l7-utils-2.5.13.tgz#95d801301c0259e64f5969ff9570377b9a7c5b5d"
+  integrity sha1-ldgBMBwCWeZPWWn/lXA3e5p8W10=
   dependencies:
     "@babel/runtime" "^7.7.7"
     "@turf/helpers" "^6.1.4"
