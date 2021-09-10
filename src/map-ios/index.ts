@@ -1,95 +1,87 @@
-import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
-import _regeneratorRuntime from "@babel/runtime/regenerator";
-import { Scene, PointLayer } from "@antv/l7";
+import { Scene, PointLayer } from "@antv/l7"
 import { Map } from '@antv/l7-maps';
-import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '@antv/l7-utils';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd, dispatchMapCameraParams } from '@antv/l7-utils'
+
+import MiniTouch from './minaTouch'
 import SelectorQuery from '../_utils/selector';
 
-function getMapSkew(direction) {
-  if (direction === 'Up') {
+function getMapSkew (direction) {
+  if(direction === 'Up') {
     return 1;
-  } else if (direction === 'Down') {
+  } else if(direction === 'Down') {
     return -1;
   } else {
     return 0;
   }
 }
+let startX = 0
+let startY = 0
 
-var startX = 0;
-var startY = 0;
 Component({
   data: {
     scene: null,
-    mapCtx: null
+    mapCtx: null,
   },
   props: {
     center: [120, 30],
     zoom: 4,
     pitch: 0,
-    id: 'map'
+    id: 'map',
   },
-  didMount: function didMount() {
-    var _this2 = this;
+  async didMount() {
+    console.log('ios did mount')
+    this.onReady(this)
+    const { center, pitch, zoom, id } = this.props;
 
-    return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-      var _this2$props, center, pitch, zoom, id, map, canvasElement, scene, pointData, layer;
+    const map = new Map({
+      hash: true,
+      center,
+      pitch,
+      zoom,
+    });
 
-      return _regeneratorRuntime.wrap(function _callee$(_context) {
-        while (1) {
-          switch (_context.prev = _context.next) {
-            case 0:
-              console.log('ios did mount');
+    let canvasElement = await SelectorQuery.element('map')
 
-              _this2.onReady(_this2);
+    const scene = new Scene({
+      id: id,
+      // @ts-ignore
+      canvas: canvasElement,
+      map: map,
+      hasBaseMap: true,
+    });
 
-              _this2$props = _this2.props, center = _this2$props.center, pitch = _this2$props.pitch, zoom = _this2$props.zoom, id = _this2$props.id;
-              map = new Map({
-                hash: true,
-                center: center,
-                pitch: pitch,
-                zoom: zoom
-              });
-              _context.next = 6;
-              return SelectorQuery.element('map');
+    const pointData = [
+      {
+        lng: 120.131441,
+        lat: 30.279383,
+      }
+    ];
+       
+    let layer = new PointLayer({
+      zIndex: 2
+    })
+     .source(pointData, {
+       parser: {
+         type: 'json',
+         x: 'lng',
+         y: 'lat',
+       },
+     })
+     .shape('circle')
+     .color('rgba(255, 0, 0, 1.0)')
+     .size(10)
+     .select(true)
+     .active(true);
 
-            case 6:
-              canvasElement = _context.sent;
-              scene = new Scene({
-                id: id,
-                // @ts-ignore
-                canvas: canvasElement,
-                map: map,
-                hasBaseMap: true
-              });
-              pointData = [{
-                lng: 120.131441,
-                lat: 30.279383
-              }];
-              layer = new PointLayer({
-                zIndex: 2
-              }).source(pointData, {
-                parser: {
-                  type: 'json',
-                  x: 'lng',
-                  y: 'lat'
-                }
-              }).shape('circle').color('rgba(255, 0, 0, 1.0)').size(10).select(true).active(true);
-              scene.on('loaded', function () {
-                scene.addLayer(layer);
-              });
-
-            case 11:
-            case "end":
-              return _context.stop();
-          }
-        }
-      }, _callee);
-    }))();
+    scene.on('loaded', () => {
+      scene.addLayer(layer)
+    })
   },
-  didUnmount: function didUnmount() {},
-  onError: function onError() {},
+  didUnmount() {},
+  onError() {},
   methods: {
-    onReady: function onReady(_this) {// _this.mapCtx = my.createMapContext('map');
+    onReady(_this) {
+      // _this.mapCtx = my.createMapContext('map');
       // console.log(_this.mapCtx)
       // console.log('onReady', _this)
       // new MiniTouch(_this, 'touch1', {
@@ -120,6 +112,7 @@ Component({
       //     let stepY = moveY - startY
       //     startX = moveX
       //     startY = moveY
+  
       //     _this.mapCtx.mapToScreen({
       //       latitude: _this.data.latitude,
       //       longitude: _this.data.longitude,
@@ -204,19 +197,21 @@ Component({
       //   },
       // })
     },
-    onCanvasReady: function onCanvasReady() {},
-    addMapCover: function addMapCover() {},
-    regionchange: function regionchange() {
+    onCanvasReady() {},
+    addMapCover() {
+
+    },
+    regionchange() {
       console.log('region change');
     },
-    onTouchStart: function onTouchStart(e) {
-      dispatchTouchStart(e);
+    onTouchStart(e) {
+      dispatchTouchStart(e)
     },
-    onTouchMove: function onTouchMove(e) {
-      dispatchTouchMove(e);
+    onTouchMove(e) {
+      dispatchTouchMove(e)
     },
-    onTouchEnd: function onTouchEnd(e) {
-      dispatchTouchEnd(e);
-    }
-  }
+    onTouchEnd(e) {
+      dispatchTouchEnd(e)
+    },
+  },
 });
