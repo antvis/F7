@@ -1,7 +1,8 @@
-import { Scene, PointLayer } from "@antv/l7"
+import { Scene, PointLayer } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
 
 import SelectorQuery from '../_utils/selector';
+import Store from '../_utils/store';
 
 Component({
   data: {
@@ -24,7 +25,7 @@ Component({
       zoom,
     });
 
-    let canvasElement = await SelectorQuery.element('map')
+    let canvasElement = await SelectorQuery.element('map');
 
     const scene = new Scene({
       id: id,
@@ -34,32 +35,34 @@ Component({
       hasBaseMap: true,
     });
 
+    Store.setScene(scene);
+
     const pointData = [
       {
         lng: 120.131441,
         lat: 30.279383,
-      }
+      },
     ];
-       
+
     let layer = new PointLayer({
-      zIndex: 2
+      zIndex: 2,
     })
-     .source(pointData, {
-       parser: {
-         type: 'json',
-         x: 'lng',
-         y: 'lat',
-       },
-     })
-     .shape('circle')
-     .color('rgba(255, 0, 0, 1.0)')
-     .size(10)
-     .select(true)
-     .active(true);
+      .source(pointData, {
+        parser: {
+          type: 'json',
+          x: 'lng',
+          y: 'lat',
+        },
+      })
+      .shape('circle')
+      .color('rgba(255, 0, 0, 1.0)')
+      .size(10)
+      .select(true)
+      .active(true);
 
     scene.on('loaded', () => {
-      scene.addLayer(layer)
-    })
+      scene.addLayer(layer);
+    });
   },
   didUnmount() {},
   onError() {},

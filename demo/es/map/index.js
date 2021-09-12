@@ -1,8 +1,9 @@
 import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
-import { Scene, PointLayer } from "@antv/l7";
+import { Scene, PointLayer } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
 import SelectorQuery from '../_utils/selector';
+import Store from '../_utils/store';
 Component({
   data: {
     scene: null,
@@ -43,6 +44,7 @@ Component({
                 map: map,
                 hasBaseMap: true
               });
+              Store.setScene(scene);
               pointData = [{
                 lng: 120.131441,
                 lat: 30.279383
@@ -60,7 +62,7 @@ Component({
                 scene.addLayer(layer);
               });
 
-            case 9:
+            case 10:
             case "end":
               return _context.stop();
           }

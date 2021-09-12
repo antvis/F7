@@ -4,5 +4,5 @@
   </view>
   <map id="__f7_map__" rotate="{{rotate}}" skew="{{skew}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" 
     onRegionChange="regionchange" show-location></map>
-  <slot></slot>
+  
 </view>

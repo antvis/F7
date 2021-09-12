@@ -1,6 +1,7 @@
 {
   "defaultTitle": "Map",
   "usingComponents": {
-    "f7-map": "../../es/map/index"
+    "f7-map": "../../es/map/index",
+    "point-layer": "../../es/point-layer/index"
   }
 }
