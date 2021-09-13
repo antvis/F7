@@ -1,9 +1,8 @@
 import { Scene, PointLayer } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd, dispatchMapCameraParams } from '@antv/l7-utils';
 
-import SelectorQuery from '../_utils/selector';
-import Store from '../_utils/store';
-import message from '../_utils/message';
+import { SelectorQuery, message } from '../_utils';
 
 Component({
   data: {
@@ -26,7 +25,7 @@ Component({
       zoom,
     });
 
-    let canvasElement = await SelectorQuery.element('map');
+    let canvasElement = await SelectorQuery.element(id);
 
     const scene = new Scene({
       id: id,
@@ -36,22 +35,31 @@ Component({
       hasBaseMap: true,
     });
 
-    console.log('map mount',scene);
+    this.scene = scene;
 
     scene.on('loaded', () => {
-      console.log('scene loaded');
-      
       message.emit('scene:loaded', scene);
     });
-
-    Store.setScene(scene);
   },
-  didUnmount() {},
-  onError() {},
+  didUnmount() {
+    if (this.scene) {
+      this.scene.destory();
+    }
+  },
+  onError() {
+  },
   methods: {
-    onCanvasReady() {},
+    onCanvasReady() { },
     regionchange() {
-      console.log('region change');
+    },
+    onTouchStart(e) {
+      dispatchTouchStart(e)
+    },
+    onTouchMove(e) {
+      dispatchTouchMove(e)
+    },
+    onTouchEnd(e) {
+      dispatchTouchEnd(e)
     },
   },
 });

@@ -1,15 +1,19 @@
-.f7_canvas_wrapper {
-  width: 750rpx;
-  height: 100vh;
-}
-.f7_canvas_wrapper #f7_canvas {
-  width: 750rpx;
-  height: 100vh;
-}
-.f7_map {
+.__f7_wrapper__ {
   position: absolute;
-  top: 0;
+  pointer-events: none;
   left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 100vh;
+  z-index: 9;
+}
+.__f7_wrapper__ .__f7_canvas__ {
+  position: absolute;
+  width: 750rpx;
+  height: 100vh;
+  pointer-events: none;
+}
+.__f7_wrapper__ .__f7_map__ {
   width: 750rpx;
   height: 100vh;
 }

@@ -2,9 +2,8 @@ import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
 import { Scene } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
-import SelectorQuery from '../_utils/selector';
-import Store from '../_utils/store';
-import message from '../_utils/message';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '@antv/l7-utils';
+import { SelectorQuery, message } from '../_utils';
 Component({
   data: {
     scene: null,
@@ -34,7 +33,7 @@ Component({
                 zoom: zoom
               });
               _context.next = 4;
-              return SelectorQuery.element('map');
+              return SelectorQuery.element(id);
 
             case 4:
               canvasElement = _context.sent;
@@ -45,14 +44,12 @@ Component({
                 map: map,
                 hasBaseMap: true
               });
-              console.log('map mount', scene);
+              _this.scene = scene;
               scene.on('loaded', function () {
-                console.log('scene loaded');
                 message.emit('scene:loaded', scene);
               });
-              Store.setScene(scene);
 
-            case 9:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -60,12 +57,23 @@ Component({
       }, _callee);
     }))();
   },
-  didUnmount: function didUnmount() {},
+  didUnmount: function didUnmount() {
+    if (this.scene) {
+      this.scene.destory();
+    }
+  },
   onError: function onError() {},
   methods: {
     onCanvasReady: function onCanvasReady() {},
-    regionchange: function regionchange() {
-      console.log('region change');
+    regionchange: function regionchange() {},
+    onTouchStart: function onTouchStart(e) {
+      dispatchTouchStart(e);
+    },
+    onTouchMove: function onTouchMove(e) {
+      dispatchTouchMove(e);
+    },
+    onTouchEnd: function onTouchEnd(e) {
+      dispatchTouchEnd(e);
     }
   }
 });

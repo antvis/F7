@@ -1,13 +1,13 @@
 import { PointLayer } from '@antv/l7';
 
-import message from '../_utils/message';
+import { message } from '../_utils';
 
 Component({
   data: {
     source: [
       {
-        lng: 120.131441,
-        lat: 30.279383,
+        lng: 120,
+        lat: 30,
       },
     ],
   },
@@ -19,7 +19,9 @@ Component({
   methods: {
     setup(scene, ctx) {
       console.log(scene, ctx, 'layer');
-      const layer = new PointLayer()
+      const layer = new PointLayer({
+        autoFit:true
+      })
         .source(ctx.data.source, {
           parser: {
             type: 'json',

@@ -54,4 +54,4 @@ var Selector = /*#__PURE__*/function () {
   return Selector;
 }();
 
-export default new Selector();
+export var SelectorQuery = new Selector();
