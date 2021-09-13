@@ -3,9 +3,9 @@ class Store {
   $mapContext: any;
   constructor() {
     // @ts-ignore
-    const app = getApp();
-    this.$scene = app.$scene;
-    this.$mapContext = app.$mapContext;
+    // const app = getApp();
+    this.$scene = null;
+    this.$mapContext = null;
   }
   //TODO
   setScene(scene) {

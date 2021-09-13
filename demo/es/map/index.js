@@ -1,9 +1,10 @@
 import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
-import { Scene, PointLayer } from '@antv/l7';
+import { Scene } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
 import SelectorQuery from '../_utils/selector';
 import Store from '../_utils/store';
+import message from '../_utils/message';
 Component({
   data: {
     scene: null,
@@ -19,7 +20,7 @@ Component({
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-      var _this$props, center, pitch, zoom, id, map, canvasElement, scene, pointData, layer;
+      var _this$props, center, pitch, zoom, id, map, canvasElement, scene;
 
       return _regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -44,25 +45,14 @@ Component({
                 map: map,
                 hasBaseMap: true
               });
-              Store.setScene(scene);
-              pointData = [{
-                lng: 120.131441,
-                lat: 30.279383
-              }];
-              layer = new PointLayer({
-                zIndex: 2
-              }).source(pointData, {
-                parser: {
-                  type: 'json',
-                  x: 'lng',
-                  y: 'lat'
-                }
-              }).shape('circle').color('rgba(255, 0, 0, 1.0)').size(10).select(true).active(true);
+              console.log('map mount', scene);
               scene.on('loaded', function () {
-                scene.addLayer(layer);
+                console.log('scene loaded');
+                message.emit('scene:loaded', scene);
               });
+              Store.setScene(scene);
 
-            case 10:
+            case 9:
             case "end":
               return _context.stop();
           }

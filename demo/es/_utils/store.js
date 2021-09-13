@@ -1,9 +1,9 @@
 var Store = /*#__PURE__*/function () {
   function Store() {
     // @ts-ignore
-    var app = getApp();
-    this.$scene = app.$scene;
-    this.$mapContext = app.$mapContext;
+    // const app = getApp();
+    this.$scene = null;
+    this.$mapContext = null;
   } //TODO
 
 

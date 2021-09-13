@@ -1,5 +1,5 @@
 import { PointLayer } from '@antv/l7';
-import Store from '../_utils/store';
+import message from '../_utils/message';
 Component({
   data: {
     source: [{
@@ -8,18 +8,24 @@ Component({
     }]
   },
   didMount: function didMount() {
-    var scene = Store.$scene;
-    console.log(scene, 'scene');
-    if (!scene) return;
-    var layer = new PointLayer().source(this.data.source, {
-      parser: {
-        type: 'json',
-        x: 'lng',
-        y: 'lat'
-      }
-    }).shape('circle').color('rgba(255, 0, 0, 1.0)').size(10).select(true).active(true);
-    scene.on('loaded', function () {
-      return scene.addLayer(layer);
+    var _this = this;
+
+    console.log('layer mount');
+    message.on('scene:loaded', function (scene) {
+      return _this.setup(scene, _this);
     });
+  },
+  methods: {
+    setup: function setup(scene, ctx) {
+      console.log(scene, ctx, 'layer');
+      var layer = new PointLayer().source(ctx.data.source, {
+        parser: {
+          type: 'json',
+          x: 'lng',
+          y: 'lat'
+        }
+      }).shape('circle').color('rgba(255, 0, 0, 1.0)').size(10).select(true).active(true);
+      scene.addLayer(layer);
+    }
   }
 });

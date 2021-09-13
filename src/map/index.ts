@@ -3,6 +3,7 @@ import { Map } from '@antv/l7-maps';
 
 import SelectorQuery from '../_utils/selector';
 import Store from '../_utils/store';
+import message from '../_utils/message';
 
 Component({
   data: {
@@ -35,34 +36,15 @@ Component({
       hasBaseMap: true,
     });
 
-    Store.setScene(scene);
-
-    const pointData = [
-      {
-        lng: 120.131441,
-        lat: 30.279383,
-      },
-    ];
-
-    let layer = new PointLayer({
-      zIndex: 2,
-    })
-      .source(pointData, {
-        parser: {
-          type: 'json',
-          x: 'lng',
-          y: 'lat',
-        },
-      })
-      .shape('circle')
-      .color('rgba(255, 0, 0, 1.0)')
-      .size(10)
-      .select(true)
-      .active(true);
+    console.log('map mount',scene);
 
     scene.on('loaded', () => {
-      scene.addLayer(layer);
+      console.log('scene loaded');
+      
+      message.emit('scene:loaded', scene);
     });
+
+    Store.setScene(scene);
   },
   didUnmount() {},
   onError() {},

@@ -59,6 +59,7 @@
     "@antv/l7-source": "2.5.8-mini21",
     "@antv/l7-utils": "2.5.8-mini21",
     "@babel/runtime": "^7.11.2",
+    "eventemitter3": "^4.0.7",
     "universal-env": "^3.3.3"
   },
   "scripts": {
