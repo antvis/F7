@@ -1,8 +1,9 @@
-<view>
-  <view id='f7_canvas_wrapper'>
-    <canvas onReady="onCanvasReady" type="webgl" id="{{id}}"></canvas>
-  </view>
-  <map id="__f7_map__" rotate="{{rotate}}" skew="{{skew}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" 
+<view class='__f7_wrapper__ AF-COMPONENT-OVERLAYER NebulaComponentOverLayer' onTouchStart="onTouchStart" onTouchMove="onTouchMove" 
+  onTouchEnd="onTouchEnd">
+  <canvas class="__f7_canvas__" onReady="onCanvasReady" type="webgl" id="{{id}}"></canvas>
+  <map class="__f7_map__" rotate="{{rotate}}" skew="{{skew}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" 
     onRegionChange="regionchange" show-location></map>
-  <slot></slot>
+  <point-layer></point-layer>
+  <!--<marker><view>
+      卧槽</view></marker> -->
 </view>

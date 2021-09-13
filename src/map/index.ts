@@ -1,7 +1,8 @@
-import { Scene, PointLayer } from "@antv/l7"
+import { Scene, PointLayer } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd, dispatchMapCameraParams } from '@antv/l7-utils';
 
-import SelectorQuery from '../_utils/selector';
+import { SelectorQuery, message } from '../_utils';
 
 Component({
   data: {
@@ -24,7 +25,7 @@ Component({
       zoom,
     });
 
-    let canvasElement = await SelectorQuery.element('map')
+    let canvasElement = await SelectorQuery.element(id);
 
     const scene = new Scene({
       id: id,
@@ -34,39 +35,31 @@ Component({
       hasBaseMap: true,
     });
 
-    const pointData = [
-      {
-        lng: 120.131441,
-        lat: 30.279383,
-      }
-    ];
-       
-    let layer = new PointLayer({
-      zIndex: 2
-    })
-     .source(pointData, {
-       parser: {
-         type: 'json',
-         x: 'lng',
-         y: 'lat',
-       },
-     })
-     .shape('circle')
-     .color('rgba(255, 0, 0, 1.0)')
-     .size(10)
-     .select(true)
-     .active(true);
+    this.scene = scene;
 
     scene.on('loaded', () => {
-      scene.addLayer(layer)
-    })
+      message.emit('scene:loaded', scene);
+    });
   },
-  didUnmount() {},
-  onError() {},
+  didUnmount() {
+    if (this.scene) {
+      this.scene.destory();
+    }
+  },
+  onError() {
+  },
   methods: {
-    onCanvasReady() {},
+    onCanvasReady() { },
     regionchange() {
-      console.log('region change');
+    },
+    onTouchStart(e) {
+      dispatchTouchStart(e)
+    },
+    onTouchMove(e) {
+      dispatchTouchMove(e)
+    },
+    onTouchEnd(e) {
+      dispatchTouchEnd(e)
     },
   },
 });

@@ -1,0 +1,24 @@
+<!-- 
+  TODO: 在最外层的 view 上绑定 touch 事件用于可视化层的交互
+ -->
+<view
+  onTouchStart="onTouchStart" 
+  onTouchMove="onTouchMove"
+  onTouchEnd="onTouchEnd"
+>
+  <view 
+  id='f7_canvas_wrapper'
+  
+  >
+  <!-- 
+    onTouchStart="touch1.start"
+  onTouchMove="touch1.move"
+  onTouchEnd="touch1.end"
+  onTouchCancel="touch1.cancel"
+   -->
+    <canvas onReady="onCanvasReady" type="webgl" id="{{id}}"></canvas>
+  </view>
+  <map id="__f7_map__" rotate="{{rotate}}" skew="{{skew}}" longitude="{{longitude}}" latitude="{{latitude}}" scale="{{scale}}" 
+    onRegionChange="regionchange" show-location></map>
+  <slot></slot>
+</view>

@@ -1,1 +1,3 @@
-<view>this is a map</view>
+<view class="__f7_marker__">
+  <slot></slot>
+</view>

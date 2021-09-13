@@ -1,8 +1,9 @@
 import _asyncToGenerator from "@babel/runtime/helpers/asyncToGenerator";
 import _regeneratorRuntime from "@babel/runtime/regenerator";
-import { Scene, PointLayer } from "@antv/l7";
+import { Scene } from '@antv/l7';
 import { Map } from '@antv/l7-maps';
-import SelectorQuery from '../_utils/selector';
+import { dispatchTouchStart, dispatchTouchMove, dispatchTouchEnd } from '@antv/l7-utils';
+import { SelectorQuery, message } from '../_utils';
 Component({
   data: {
     scene: null,
@@ -18,7 +19,7 @@ Component({
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee() {
-      var _this$props, center, pitch, zoom, id, map, canvasElement, scene, pointData, layer;
+      var _this$props, center, pitch, zoom, id, map, canvasElement, scene;
 
       return _regeneratorRuntime.wrap(function _callee$(_context) {
         while (1) {
@@ -32,7 +33,7 @@ Component({
                 zoom: zoom
               });
               _context.next = 4;
-              return SelectorQuery.element('map');
+              return SelectorQuery.element(id);
 
             case 4:
               canvasElement = _context.sent;
@@ -43,24 +44,12 @@ Component({
                 map: map,
                 hasBaseMap: true
               });
-              pointData = [{
-                lng: 120.131441,
-                lat: 30.279383
-              }];
-              layer = new PointLayer({
-                zIndex: 2
-              }).source(pointData, {
-                parser: {
-                  type: 'json',
-                  x: 'lng',
-                  y: 'lat'
-                }
-              }).shape('circle').color('rgba(255, 0, 0, 1.0)').size(10).select(true).active(true);
+              _this.scene = scene;
               scene.on('loaded', function () {
-                scene.addLayer(layer);
+                message.emit('scene:loaded', scene);
               });
 
-            case 9:
+            case 8:
             case "end":
               return _context.stop();
           }
@@ -68,12 +57,23 @@ Component({
       }, _callee);
     }))();
   },
-  didUnmount: function didUnmount() {},
+  didUnmount: function didUnmount() {
+    if (this.scene) {
+      this.scene.destory();
+    }
+  },
   onError: function onError() {},
   methods: {
     onCanvasReady: function onCanvasReady() {},
-    regionchange: function regionchange() {
-      console.log('region change');
+    regionchange: function regionchange() {},
+    onTouchStart: function onTouchStart(e) {
+      dispatchTouchStart(e);
+    },
+    onTouchMove: function onTouchMove(e) {
+      dispatchTouchMove(e);
+    },
+    onTouchEnd: function onTouchEnd(e) {
+      dispatchTouchEnd(e);
     }
   }
 });
