@@ -19,7 +19,8 @@ Component({
     setup: function setup(scene, ctx) {
       console.log(scene, ctx, 'layer');
       var layer = new PointLayer({
-        autoFit: true
+        autoFit: true,
+        zIndex: 2
       }).source(ctx.data.source, {
         parser: {
           type: 'json',
